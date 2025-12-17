@@ -20,6 +20,7 @@ import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Typography from "@mui/material/Typography";
 import UnassignModal from "./UnassignModal";
+import AssignModal from "./AssignModal";
 
 const employeeColumns = [
   { id: "firstName", label: "First Name", minWidth: 170 },
@@ -48,14 +49,22 @@ const CustomTable = ({ activeTab }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [columnNames, setColumnNames] = useState(employeeColumns);
-  const [open, setOpen] = useState(false);
+  const [openUnassign, setOpenUnassign] = useState(false);
+  const [openAssign, setOpenAssign] = useState(false);
   const [focusedItem, setFocusedItem] = useState({});
-  const handleOpen = (rowData) => {
-    setOpen(true);
+  const handleOpen = (rowData, isAssigned) => {
+    if (isAssigned) setOpenUnassign(true);
+    else setOpenAssign(true);
     setFocusedItem(rowData);
   };
-  const handleClose = () => {
-    setOpen(false);
+  const handleCloseUnassign = () => {
+    setOpenUnassign(false);
+    setTimeout(() => {
+      setFocusedItem({});
+    }, 500);
+  };
+  const handleCloseAssign = () => {
+    setOpenAssign(false);
     setTimeout(() => {
       setFocusedItem({});
     }, 500);
@@ -111,12 +120,7 @@ const CustomTable = ({ activeTab }) => {
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row) => {
                   return (
-                    <TableRow
-                      hover
-                      role="checkbox"
-                      tabIndex={-1}
-                      key={row.id}
-                    >
+                    <TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
                       {columnNames.map((column) => {
                         if (column.id === "action" && activeTab === "Assets") {
                           const isAssigned = row.status === "In Use";
@@ -140,7 +144,7 @@ const CustomTable = ({ activeTab }) => {
                             <TableCell key={column.id} align="center">
                               <IconButton
                                 color={ActionColor}
-                                onClick={() => handleOpen(row)}
+                                onClick={() => handleOpen(row, isAssigned)}
                                 aria-label={tooltipText}
                                 size="small"
                               >
@@ -174,10 +178,14 @@ const CustomTable = ({ activeTab }) => {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </Paper>
-
       <UnassignModal
-        open={open}
-        handleClose={handleClose}
+        open={openUnassign}
+        handleClose={handleCloseUnassign}
+        focusedItem={focusedItem}
+      />
+      <AssignModal
+        open={openAssign}
+        handleClose={handleCloseAssign}
         focusedItem={focusedItem}
       />
     </>

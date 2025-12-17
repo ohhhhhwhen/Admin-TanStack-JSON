@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Typography from "@mui/material/Typography";
-import { Button } from "@mui/material";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { Button, MenuItem, Select } from "@mui/material";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { updateAsset } from "../api/assets";
+import { fetchEmployees } from "../api/employees";
 
 const style = {
   position: "absolute",
@@ -25,20 +26,36 @@ const ASSET_FIELD_MAP = [
   { key: "type", label: "Type" },
   { key: "serialNumber", label: "Serial #" },
   { key: "status", label: "Status" },
-  { key: "ownerName", label: "Assigned To" },
   { key: "lastUpdate", label: "Last Update Date" },
 ];
 
 const AssignModal = ({ open, handleClose, focusedItem }) => {
+  const [selectedEmployee, setSelectedEmployee] = useState(null);
   const queryClient = useQueryClient();
+  const { isLoading, isError, data, error } = useQuery({
+    queryKey: ["data", "employees"],
+    queryFn: fetchEmployees,
+  });
 
   const updateAssetMutation = useMutation({
     mutationFn: updateAsset,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["data", "assets"] });
       handleClose();
+      setTimeout(() => {
+        setSelectedEmployee(null);
+      }, 500);
     },
   });
+
+  const handleCancel = () => {
+    handleClose();
+    setSelectedEmployee(null);
+  };
+
+  const handleChange = (event) => {
+    setSelectedEmployee(event.target.value);
+  };
 
   function formatDateToYYYYMMDD() {
     const date = new Date();
@@ -52,9 +69,9 @@ const AssignModal = ({ open, handleClose, focusedItem }) => {
     updateAssetMutation.mutate({
       ...focusedItem,
       status: "In Use",
-      assignedToEmployeeId: null,
-      ownerName: null,
-      department: null,
+      assignedToEmployeeId: selectedEmployee.id,
+      ownerName: `${selectedEmployee.firstName} ${selectedEmployee.lastName}`,
+      department: selectedEmployee.department,
       lastUpdate: formatDateToYYYYMMDD(),
     });
   };
@@ -76,10 +93,31 @@ const AssignModal = ({ open, handleClose, focusedItem }) => {
       <Fade in={open}>
         <Box sx={style}>
           <Typography id="transition-modal-title" variant="h6" component="h2">
-            Do You Want To Unassign This Item?
+            Assign This Item?
           </Typography>
 
           {focusedItem && <TwoColumnGrid assetDetails={focusedItem} />}
+
+          <Typography variant="p" component="p" style={{ marginTop: "10px" }}>
+            Assign This To:
+          </Typography>
+
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            style={{ marginTop: "10px" }}
+            value={selectedEmployee}
+            onChange={handleChange}
+          >
+            {data.map((employee) => {
+              return (
+                <MenuItem
+                  key={employee.id}
+                  value={employee}
+                >{`${employee.firstName} ${employee.lastName}`}</MenuItem>
+              );
+            })}
+          </Select>
 
           <div
             style={{
@@ -88,10 +126,14 @@ const AssignModal = ({ open, handleClose, focusedItem }) => {
               marginTop: "20px",
             }}
           >
-            <Button variant="contained" onClick={handleClose}>
+            <Button variant="contained" onClick={handleCancel}>
               Cancel
             </Button>
-            <Button variant="contained" onClick={handleSubmit}>
+            <Button
+              disabled={!selectedEmployee}
+              variant="contained"
+              onClick={handleSubmit}
+            >
               Confirm
             </Button>
           </div>
