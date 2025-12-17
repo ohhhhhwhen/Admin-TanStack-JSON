@@ -1,0 +1,4 @@
+export async function fetchEmployees() {
+  const response = await fetch("http://localhost:3000/employees");
+  return response.json();
+}

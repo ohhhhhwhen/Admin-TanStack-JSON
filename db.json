@@ -1,0 +1,234 @@
+{
+  "employees": [
+    {
+      "id": "09a5b67c-d1e2-4f3a-9c4b-8d7e6f5a4b3c",
+      "firstName": "Aiden",
+      "lastName": "Chen",
+      "position": "Software Engineer",
+      "department": "Engineering",
+      "startDate": "2022-08-15"
+    },
+    {
+      "id": "1c2d3e4f-5a6b-4c7d-8e9f-0a1b2c3d4e5f",
+      "firstName": "Sofia",
+      "lastName": "Miller",
+      "position": "Software Engineer",
+      "department": "Engineering",
+      "startDate": "2023-01-20"
+    },
+    {
+      "id": "2f3e4d5c-6b7a-48d9-a0b1-c2d3e4f5a6b7",
+      "firstName": "Ethan",
+      "lastName": "James",
+      "position": "Data Scientist",
+      "department": "R&D",
+      "startDate": "2021-11-01"
+    },
+    {
+      "id": "3a4b5c6d-7e8f-4g9h-b1c2-d3e4f5a6b7c8",
+      "firstName": "Lena",
+      "lastName": "Rodriguez",
+      "position": "Data Scientist",
+      "department": "R&D",
+      "startDate": "2023-05-10"
+    },
+    {
+      "id": "4b5c6d7e-8f9a-4h0i-c2d3-e4f5a6b7c8d9",
+      "firstName": "Olivia",
+      "lastName": "Davis",
+      "position": "Product Manager",
+      "department": "Product",
+      "startDate": "2020-03-25"
+    },
+    {
+      "id": "5c6d7e8f-9a0b-4j1k-d3e4-f5a6b7c8d9e0",
+      "firstName": "Ben",
+      "lastName": "Wilson",
+      "position": "Product Manager",
+      "department": "Product",
+      "startDate": "2024-02-01"
+    },
+    {
+      "id": "6d7e8f9a-0b1c-4k2l-e4f5-a6b7c8d9e0f1",
+      "firstName": "Maya",
+      "lastName": "Hernandez",
+      "position": "UX Designer",
+      "department": "Design",
+      "startDate": "2021-07-12"
+    },
+    {
+      "id": "7e8f9a0b-1c2d-4l3m-f5a6-b7c8d9e0f1g2",
+      "firstName": "Caleb",
+      "lastName": "Green",
+      "position": "UX Designer",
+      "department": "Design",
+      "startDate": "2023-09-05"
+    },
+    {
+      "id": "8f9a0b1c-2d3e-4m4n-g6h7-c8d9e0f1g2h3",
+      "firstName": "Victoria",
+      "lastName": "Lee",
+      "position": "Marketing Specialist",
+      "department": "Marketing",
+      "startDate": "2022-04-18"
+    },
+    {
+      "id": "9a0b1c2d-3e4f-4n5o-h7i8-d9e0f1g2h3i4",
+      "firstName": "David",
+      "lastName": "Schwartz",
+      "position": "Marketing Specialist",
+      "department": "Marketing",
+      "startDate": "2024-01-01"
+    },
+    {
+      "id": "a0b1c2d3-e4f5-4o6p-i9j0-e1f2a3b4c5d6",
+      "firstName": "Amy",
+      "lastName": "Wang",
+      "position": "Software Engineering Intern",
+      "department": "Engineering",
+      "startDate": "2025-06-01"
+    },
+    {
+      "id": "b1c2d3e4-f5a6-4p7q-j0k1-f2a3b4c5d6e7",
+      "firstName": "Liam",
+      "lastName": "Patel",
+      "position": "UX Design Intern",
+      "department": "Design",
+      "startDate": "2025-06-01"
+    }
+  ],
+  "assets": [
+    {
+      "id": "4c8f0001-a1b2-4c3d-8e5f-0a1b2c3d4e5f",
+      "name": "MacBook Pro M3",
+      "type": "Laptop",
+      "serialNumber": "C02G2G3GGTDK",
+      "status": "Available",
+      "assignedToEmployeeId": null,
+      "ownerName": null,
+      "department": null,
+      "lastUpdate": "2025-12-11"
+    },
+    {
+      "id": "4c8f0002-b2c3-4d4e-9f6a-1b2c3d4e5f6a",
+      "name": "Dell UltraSharp Monitor 27",
+      "type": "Monitor",
+      "serialNumber": "CN-03G91G-12345-3BT-933B-A01",
+      "status": "Available",
+      "assignedToEmployeeId": null,
+      "ownerName": null,
+      "department": null,
+      "lastUpdate": "2025-12-11"
+    },
+    {
+      "id": "4c8f0003-c3d4-4e5f-a07b-2c3d4e5f6a7b",
+      "name": "Windows Desktop PC",
+      "type": "Desktop",
+      "serialNumber": "B6K19010023",
+      "status": "Available",
+      "assignedToEmployeeId": null,
+      "ownerName": null,
+      "department": null,
+      "lastUpdate": null
+    },
+    {
+      "id": "4c8f0004-d4e5-4f6a-b18c-3d4e5f6a7b8c",
+      "name": "Noise-Cancelling Headset",
+      "type": "Accessory",
+      "serialNumber": "HC20240325",
+      "status": "Available",
+      "assignedToEmployeeId": null,
+      "ownerName": null,
+      "department": null,
+      "lastUpdate": "2025-12-11"
+    },
+    {
+      "id": "4c8f0005-e5f6-4g7b-c29d-4e5f6a7b8c9d",
+      "name": "Server Rack Unit (R410)",
+      "type": "Server",
+      "serialNumber": "SRU-19283746",
+      "status": "Maintenance",
+      "assignedToEmployeeId": null,
+      "ownerName": null,
+      "department": "Infrastructure",
+      "lastUpdate": null
+    },
+    {
+      "id": "4c8f0006-f6a7-4h8c-d3a0-5f6a7b8c9d0e",
+      "name": "iPhone 14 (Company Phone)",
+      "type": "Mobile",
+      "serialNumber": "F2LC3X4Y5Z",
+      "status": "In Use",
+      "assignedToEmployeeId": "4b5c6d7e-8f9a-4h0i-c2d3-e4f5a6b7c8d9",
+      "ownerName": "Olivia Davis",
+      "department": "Product",
+      "lastUpdate": "2025-02-15"
+    },
+    {
+      "id": "4c8f0007-a7b8-4i9d-e4b1-6a7b8c9d0e1f",
+      "name": "Mechanical Keyboard (TKL)",
+      "type": "Accessory",
+      "serialNumber": "MK-TKL-0045",
+      "status": "Available",
+      "assignedToEmployeeId": null,
+      "ownerName": null,
+      "department": null,
+      "lastUpdate": null
+    },
+    {
+      "id": "4c8f0008-b8c9-4j0e-f5c2-7b8c9d0e1f2a",
+      "name": "Surface Laptop Studio",
+      "type": "Laptop",
+      "serialNumber": "R7C8D9E0F1G2",
+      "status": "Retired",
+      "assignedToEmployeeId": null,
+      "ownerName": null,
+      "department": null,
+      "lastUpdate": null
+    },
+    {
+      "id": "4c8f0009-c9d0-4k1f-g6d3-8c9d0e1f2a3b",
+      "name": "iPad Pro 11-inch",
+      "type": "Tablet",
+      "serialNumber": "G3H4I5J6K7L8",
+      "status": "In Use",
+      "assignedToEmployeeId": "6d7e8f9a-0b1c-4k2l-e4f5-a6b7c8d9e0f1",
+      "ownerName": "Maya Hernandez",
+      "department": "Design",
+      "lastUpdate": "2025-04-01"
+    },
+    {
+      "id": "4c8f0010-d0e1-4l2a-h7e4-9d0e1f2a3b4c",
+      "name": "Monitor Arm (Dual)",
+      "type": "Accessory",
+      "serialNumber": "MA-D-1029",
+      "status": "In Use",
+      "assignedToEmployeeId": "2f3e4d5c-6b7a-48d9-a0b1-c2d3e4f5a6b7",
+      "ownerName": "Ethan James",
+      "department": "R&D",
+      "lastUpdate": "2025-05-14"
+    },
+    {
+      "id": "4c8f0011-e1f2-4m3b-i8f5-0e1f2a3b4c5d",
+      "name": "Webcam (4K)",
+      "type": "Accessory",
+      "serialNumber": "WC-4K-0019",
+      "status": "Available",
+      "assignedToEmployeeId": null,
+      "ownerName": null,
+      "department": null,
+      "lastUpdate": null
+    },
+    {
+      "id": "4c8f0012-f2a3-4n4c-j9g6-1f2a3b4c5d6e",
+      "name": "Android Test Device (Pixel)",
+      "type": "Mobile",
+      "serialNumber": "ABC123XYZ",
+      "status": "In Use",
+      "assignedToEmployeeId": "3a4b5c6d-7e8f-4g9h-b1c2-d3e4f5a6b7c8",
+      "ownerName": "Lena Rodriguez",
+      "department": "R&D",
+      "lastUpdate": "2025-06-28"
+    }
+  ]
+}
