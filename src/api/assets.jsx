@@ -16,3 +16,14 @@ export async function updateAsset(updatedAsset) {
   );
   return response.json();
 }
+
+export async function createAsset(newAsset) {
+  const response = await fetch("http://localhost:3000/assets", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(newAsset),
+  });
+  return response.json();
+}

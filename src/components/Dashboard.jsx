@@ -14,8 +14,11 @@ import PersonIcon from "@mui/icons-material/Person";
 import InventoryIcon from "@mui/icons-material/Inventory";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
+import AddIcon from "@mui/icons-material/Add";
 import CustomTable from "./CustomTable";
 import { useState } from "react";
+import NewEmployee from "./NewEmployee";
+import NewAsset from "./NewAsset";
 
 const drawerWidth = 240;
 const tabArray = [
@@ -72,16 +75,22 @@ const Dashboard = () => {
         </List>
         <Divider />
         <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
+          <ListItem disablePadding>
+            <ListItemButton onClick={() => setActiveTab("New Employee")}>
+              <ListItemIcon>
+                <AddIcon />
+              </ListItemIcon>
+              <ListItemText primary={"New Employee"} />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton onClick={() => setActiveTab("New Asset")}>
+              <ListItemIcon>
+                <AddIcon />
+              </ListItemIcon>
+              <ListItemText primary={"New Asset"} />
+            </ListItemButton>
+          </ListItem>
         </List>
       </Drawer>
       <Box
@@ -90,6 +99,8 @@ const Dashboard = () => {
       >
         <Toolbar />
         <CustomTable activeTab={activeTab} />
+        {activeTab === "New Employee" && <NewEmployee />}
+        {activeTab === "New Asset" && <NewAsset />}
       </Box>
     </Box>
   );

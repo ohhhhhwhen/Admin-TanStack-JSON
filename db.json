@@ -6,6 +6,7 @@
       "lastName": "Chen",
       "position": "Software Engineer",
       "department": "Engineering",
+      "isIntern": false,
       "startDate": "2022-08-15"
     },
     {
@@ -14,6 +15,7 @@
       "lastName": "Miller",
       "position": "Software Engineer",
       "department": "Engineering",
+      "isIntern": false,
       "startDate": "2023-01-20"
     },
     {
@@ -22,6 +24,7 @@
       "lastName": "James",
       "position": "Data Scientist",
       "department": "R&D",
+      "isIntern": false,
       "startDate": "2021-11-01"
     },
     {
@@ -30,6 +33,7 @@
       "lastName": "Rodriguez",
       "position": "Data Scientist",
       "department": "R&D",
+      "isIntern": false,
       "startDate": "2023-05-10"
     },
     {
@@ -38,6 +42,7 @@
       "lastName": "Davis",
       "position": "Product Manager",
       "department": "Product",
+      "isIntern": false,
       "startDate": "2020-03-25"
     },
     {
@@ -46,6 +51,7 @@
       "lastName": "Wilson",
       "position": "Product Manager",
       "department": "Product",
+      "isIntern": false,
       "startDate": "2024-02-01"
     },
     {
@@ -54,6 +60,7 @@
       "lastName": "Hernandez",
       "position": "UX Designer",
       "department": "Design",
+      "isIntern": false,
       "startDate": "2021-07-12"
     },
     {
@@ -62,6 +69,7 @@
       "lastName": "Green",
       "position": "UX Designer",
       "department": "Design",
+      "isIntern": false,
       "startDate": "2023-09-05"
     },
     {
@@ -70,6 +78,7 @@
       "lastName": "Lee",
       "position": "Marketing Specialist",
       "department": "Marketing",
+      "isIntern": false,
       "startDate": "2022-04-18"
     },
     {
@@ -78,6 +87,7 @@
       "lastName": "Schwartz",
       "position": "Marketing Specialist",
       "department": "Marketing",
+      "isIntern": false,
       "startDate": "2024-01-01"
     },
     {
@@ -86,6 +96,7 @@
       "lastName": "Wang",
       "position": "Software Engineering Intern",
       "department": "Engineering",
+      "isIntern": true,
       "startDate": "2025-06-01"
     },
     {
@@ -94,7 +105,26 @@
       "lastName": "Patel",
       "position": "UX Design Intern",
       "department": "Design",
+      "isIntern": true,
       "startDate": "2025-06-01"
+    },
+    {
+      "id": "4610b6c5-a07c-4c89-8c62-fd8ce3f5fc0f",
+      "firstName": "Test",
+      "lastName": "User",
+      "position": "Software Engineer",
+      "department": "Engineering",
+      "isIntern": false,
+      "startDate": ""
+    },
+    {
+      "id": "19b06584-aa5c-4100-b30f-ee575490d930",
+      "firstName": "John",
+      "lastName": "Doe",
+      "position": "UX Designer",
+      "department": "Design",
+      "isIntern": false,
+      "startDate": "2025-12-10"
     }
   ],
   "assets": [

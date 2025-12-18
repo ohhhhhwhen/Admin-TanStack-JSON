@@ -95,7 +95,12 @@ const CustomTable = ({ activeTab }) => {
 
   if (isLoading) return "loading...";
   if (isError) return `Error ${error.message}`;
-  if (activeTab === "Requests") return null;
+  if (
+    activeTab === "Requests" ||
+    activeTab === "New Employee" ||
+    activeTab === "New Asset"
+  )
+    return null;
 
   return (
     <>
