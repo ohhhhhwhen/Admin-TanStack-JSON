@@ -42,8 +42,6 @@ const NewEmployee = () => {
     createEmployeePostMutation.mutate({ id: uuidv4(), ...employeeInfo });
   };
 
-  console.log(employeeInfo);
-
   const handleChangeInput = (e) => {
     setEmployeeInfo({
       ...employeeInfo,
@@ -161,7 +159,7 @@ const NewEmployee = () => {
           <DatePicker value={employeeStartDate} onChange={handleDateChange} />
         </DemoContainer>
       </LocalizationProvider>
-      <div style={{ display: "flex" }}>
+      <div style={{ display: "flex", marginTop: "10px", gap: 10 }}>
         <Button variant="contained" onClick={handleCancel}>
           Cancel
         </Button>
