@@ -27,3 +27,13 @@ export async function createAsset(newAsset) {
   });
   return response.json();
 }
+
+export async function deleteAsset(id) {
+  const response = await fetch(
+    `http://localhost:3000/assets/${id}`,
+    {
+      method: "DELETE",
+    }
+  );
+  return response.json();
+}

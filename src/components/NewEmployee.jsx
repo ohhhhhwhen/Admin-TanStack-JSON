@@ -26,6 +26,7 @@ const NewEmployee = () => {
     department: "Select Department",
     isIntern: false,
     startDate: "",
+    currentEmployee: true,
   };
   const [employeeInfo, setEmployeeInfo] = useState(defaultInfo);
   const [employeeStartDate, setEmployeeStartDate] = useState(dayjs(new Date()));

@@ -10,23 +10,28 @@ import TableRow from "@mui/material/TableRow";
 import IconButton from "@mui/material/IconButton";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
+import DeleteIcon from "@mui/icons-material/Delete";
 import { useQuery } from "@tanstack/react-query";
 import { fetchEmployees } from "../api/employees";
 import { useEffect } from "react";
 import { fetchAssets } from "../api/assets";
-import Backdrop from "@mui/material/Backdrop";
-import Box from "@mui/material/Box";
-import Modal from "@mui/material/Modal";
-import Fade from "@mui/material/Fade";
-import Typography from "@mui/material/Typography";
 import UnassignModal from "./UnassignModal";
 import AssignModal from "./AssignModal";
+import DeleteAssetModal from "./DeleteAssetModal";
+import DeleteEmployeeModal from "./DeleteEmployeeModal";
 
 const employeeColumns = [
   { id: "firstName", label: "First Name", minWidth: 170 },
   { id: "lastName", label: "Last Name", minWidth: 170 },
   { id: "department", label: "Department", minWidth: 170 },
   { id: "position", label: "Position", minWidth: 170 },
+  {
+    id: "action",
+    label: "Action",
+    minWidth: 50,
+    maxWidth: 50,
+    align: "center",
+  },
 ];
 
 const inventoryColumns = [
@@ -51,20 +56,31 @@ const CustomTable = ({ activeTab }) => {
   const [columnNames, setColumnNames] = useState(employeeColumns);
   const [openUnassign, setOpenUnassign] = useState(false);
   const [openAssign, setOpenAssign] = useState(false);
+  const [openDeleteAsset, setOpenDeleteAsset] = useState(false);
+  const [openDeleteEmployee, setOpenDeleteEmployee] = useState(false);
   const [focusedItem, setFocusedItem] = useState({});
   const handleOpen = (rowData, isAssigned) => {
     if (isAssigned) setOpenUnassign(true);
     else setOpenAssign(true);
     setFocusedItem(rowData);
   };
-  const handleCloseUnassign = () => {
-    setOpenUnassign(false);
-    setTimeout(() => {
-      setFocusedItem({});
-    }, 500);
+  const handleOpenDeleteAsset = (rowData) => {
+    setOpenDeleteAsset(true);
+    setFocusedItem(rowData);
   };
-  const handleCloseAssign = () => {
+  const handleOpenDeleteEmployee = (rowData) => {
+    setOpenDeleteEmployee(true);
+    setFocusedItem(rowData);
+  };
+  const handleDelete = (rowData) => {
+    if (activeTab === "Employees") handleOpenDeleteEmployee(rowData);
+    else handleOpenDeleteAsset(rowData);
+  };
+  const handleClose = () => {
+    setOpenUnassign(false);
     setOpenAssign(false);
+    setOpenDeleteAsset(false);
+    setOpenDeleteEmployee(false);
     setTimeout(() => {
       setFocusedItem({});
     }, 500);
@@ -127,22 +143,33 @@ const CustomTable = ({ activeTab }) => {
                   return (
                     <TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
                       {columnNames.map((column) => {
-                        if (column.id === "action" && activeTab === "Assets") {
-                          const isAssigned = row.status === "In Use";
-                          const isAvailable = row.status === "Available";
-
+                        if (column.id === "action") {
+                          let isAssigned = false;
+                          let isAvailable = false;
+                          let isActiveAsset = false;
+                          let isCurrentEmployee = false;
                           let ActionIcon = null;
                           let ActionColor = "default";
                           let tooltipText = "";
 
-                          if (isAssigned) {
-                            ActionIcon = RemoveCircleOutlineIcon;
-                            ActionColor = "error";
-                            tooltipText = "Unassign Asset";
-                          } else if (isAvailable) {
-                            ActionIcon = AddIcon;
-                            ActionColor = "success";
-                            tooltipText = "Assign Asset";
+                          if (activeTab === "Assets") {
+                            isAssigned = row.status === "In Use";
+                            isAvailable = row.status === "Available";
+                            isActiveAsset = row.status !== "Retired";
+
+                            if (isAssigned) {
+                              ActionIcon = RemoveCircleOutlineIcon;
+                              ActionColor = "error";
+                              tooltipText = "Unassign Asset";
+                            } else if (isAvailable) {
+                              ActionIcon = AddIcon;
+                              ActionColor = "success";
+                              tooltipText = "Assign Asset";
+                            }
+                          }
+
+                          if (activeTab === "Employees") {
+                            isCurrentEmployee = row.currentEmployee === true;
                           }
 
                           return (
@@ -155,6 +182,15 @@ const CustomTable = ({ activeTab }) => {
                               >
                                 {ActionIcon && <ActionIcon fontSize="small" />}
                               </IconButton>
+                              {(isCurrentEmployee || isActiveAsset) && (
+                                <IconButton
+                                  onClick={() => handleDelete(row)}
+                                  aria-label="Delete Asset"
+                                  size="small"
+                                >
+                                  <DeleteIcon />
+                                </IconButton>
+                              )}
                             </TableCell>
                           );
                         }
@@ -185,12 +221,22 @@ const CustomTable = ({ activeTab }) => {
       </Paper>
       <UnassignModal
         open={openUnassign}
-        handleClose={handleCloseUnassign}
+        handleClose={handleClose}
         focusedItem={focusedItem}
       />
       <AssignModal
         open={openAssign}
-        handleClose={handleCloseAssign}
+        handleClose={handleClose}
+        focusedItem={focusedItem}
+      />
+      <DeleteAssetModal
+        open={openDeleteAsset}
+        handleClose={handleClose}
+        focusedItem={focusedItem}
+      />
+      <DeleteEmployeeModal
+        open={openDeleteEmployee}
+        handleClose={handleClose}
         focusedItem={focusedItem}
       />
     </>

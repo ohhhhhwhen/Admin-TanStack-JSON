@@ -25,7 +25,7 @@ const NewAsset = () => {
     name: "",
     type: "Select Type",
     department: "Select Department",
-    serialNumber: "",
+    serialNum: "",
     status: "Available",
     lastUpdate: dayjs(new Date()).format("YYYY-MM-DD"),
   };
@@ -139,8 +139,8 @@ const NewAsset = () => {
         id="outlined-basic"
         placeholder="Serial #"
         variant="outlined"
-        name="serialNumber"
-        value={assetInfo.serialNumber}
+        name="serialNum"
+        value={assetInfo.serialNum}
         onChange={handleChangeInput}
       />
       <div style={{ display: "flex", marginTop: "10px", gap: 10 }}>

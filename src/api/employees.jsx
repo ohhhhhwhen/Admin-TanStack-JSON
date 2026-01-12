@@ -13,3 +13,10 @@ export async function createEmployee(newEmployee) {
   });
   return response.json();
 }
+
+export async function deleteEmployee(id) {
+  const response = await fetch(`http://localhost:3000/employees/${id}`, {
+    method: "DELETE",
+  });
+  return response.json();
+}
